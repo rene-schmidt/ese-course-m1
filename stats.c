@@ -40,41 +40,76 @@ void main() {
 
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-  print_statistics(&test, SIZE);
+
+  /* "Call by Reference" sort of given array by the name "test" 
+     by given size SIZE (which is 40) 
+     
+     For "Best Practice", and to avoid errors, the variable SIZE is
+     being analyzed. If the value is below 2, the Bubble Sort Algorithm
+     being used won't work and thus, it can't be used. 
+
+     Of course, there are other methods to make the code still working,
+     but this is not the scope of this modules excercise.
+     */ 
+  if(SIZE < 2){
+    printf("%s", "Error: Size of array too short. ");
+  } else {
+    print_statistics(&test, SIZE);
+  }
+
 }
 
+/*
+  Main print function that evaluates the helper classes and prints them
+  nicely in the console. The function uses "call by reference", as it
+  is required to directly change the array itself.
+*/
 void print_statistics(unsigned char (*input_array)[], int length){
 
+  // ---- Unsorted Array --------
   printf("%s", "Array (unsorted): ");
   print_array(input_array, length);
 
+  /*
+    "Call by Reference" of the given variable "test" declared and initialized
+    inside the main function.
+  */
   sort_array(input_array, length);
 
+  // ---- Sorted Array --------
   printf("%s", "Array (sorted): ");
   print_array(input_array, length);
 
+  // Simple delimiter for easier reading
   printf("%s", "------------");
   printf("%s", "\r\n");
-
-  printf("%s", "Minimum (find_minimum): ");
+  
+  
+  // ---- Minimum --------
+  printf("%s", "Minimum : ");
   printf("%u", find_minimum(input_array,length));
   printf("%s", "\r\n");
 
-  printf("%s", "Maximum (find_maximum): ");
+  // ---- Maximum --------
+  printf("%s", "Maximum : ");
   printf("%u", find_maximum(input_array,length));
   printf("%s", "\r\n");
 
-  printf("%s", "Average (find_mean): ");
+  // ---- Mean | Average --------
+  printf("%s", "Average | Mean : ");
   printf("%u", find_mean(input_array,length));
   printf("%s", "\r\n");
 
-  printf("%s", "Median (find_median): ");
+  // ---- Median --------
+  printf("%s", "Median : ");
   printf("%.1f", find_median(input_array,length));
   printf("%s", "\r\n");
 
 }
 
- 
+/*
+  Helper function to display arrays in the console conveniently
+*/
 void print_array(unsigned char (*input_array)[], int length){
   for (int i = 0; i < length; i++){
     printf("%u ", (*input_array)[i]);
@@ -82,9 +117,22 @@ void print_array(unsigned char (*input_array)[], int length){
   printf("\n");
 }
 
- 
+/*
+  This class takes a pre-sorted array and determins the median
+  (which by definition are the middle entries of a sorted set)
+
+  --- Warning: --- 
+  This function can only be used, when the set, given
+  by input_array, is already sorted. It won't work if the array
+  is not sorted before this function is being called.
+*/
 float find_median(unsigned char (*input_array)[], int length){
 
+  /*
+    If the given array is even, take the most inner values and take the mean from them
+    (the middle entries are determined by (n/2)-1 aswell as (n/2) accordingly)
+    Since the array might be odd, it is differently handled.
+  */
   if(length % 2 == 0){
     return ( (*input_array)[(length/2)-1] + (*input_array)[(length/2)] ) / 2.0;
   } else {
@@ -93,7 +141,11 @@ float find_median(unsigned char (*input_array)[], int length){
 
 }
 
- 
+/*
+  A generic function about calculating the mean (average) of a given set
+  This is being done by adding every value together and dividing by the 
+  number of elements in the set.
+*/
 unsigned char find_mean(unsigned char (*input_array)[], int length){
   
   unsigned int mean = 0;
@@ -107,7 +159,12 @@ unsigned char find_mean(unsigned char (*input_array)[], int length){
   return mean;
 }
 
-
+/*
+  A compact function to find out the maximum of a given array, be it 
+  sorted or unsorted. Alternatively when the call of the sort_array()
+  function is used before this function it can be drastically reduced
+  to simply: return (*input_array)[0];
+*/
 unsigned char find_maximum(unsigned char (*input_array)[], int length){
   
   unsigned char maximum = (*input_array)[0];
@@ -121,7 +178,12 @@ unsigned char find_maximum(unsigned char (*input_array)[], int length){
   return maximum;
 }
 
- 
+/*
+  A compact function to find out the minimum of a given array, be it 
+  sorted or unsorted. Alternatively when the call of the sort_array()
+  function is used before this function it can be drastically reduced
+  to simply: return (*input_array)[length-1];
+*/
 unsigned char find_minimum(unsigned char (*input_array)[], int length){
   
   unsigned char minimum = (*input_array)[0];
@@ -135,7 +197,19 @@ unsigned char find_minimum(unsigned char (*input_array)[], int length){
   return minimum;
 }
 
- 
+/*
+  The actual core of the statistics program. This function sorts the values
+  of the array using the bubble sort. Though not the efficient of the sorting
+  methods with a runtime of O(n^2), it is relatively simple to implement.
+
+  Two values are being compared by each other and in case the bigger value is
+  not on the earlier position, they get swapped (since the module demands a
+  descending order, with means the bigger values are first). 
+
+  In order to swap the values, a helper variable "temp_val" is being used to
+  temporarily store the value of the right value, to be then rewritten after
+  the actual swap.
+*/
 void sort_array(unsigned char (*input_array)[], int length){
 
   unsigned char temp_val;

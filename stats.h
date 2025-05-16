@@ -29,6 +29,10 @@
  *
  * This function prints the statistics of given array and returns:
  * minimum, maximum, average and median
+ * 
+ * Main print function that evaluates the helper classes and prints them
+ * nicely in the console. The function uses "call by reference", as it
+ * is required to directly change the array itself.
  *
  * @param input_array pointer reference of array to be diagnosed
  */
@@ -39,7 +43,7 @@
  /**
  * @brief Print a given array
  *
- * A simple printing function that returns to the console a given array with given length
+ * Helper function to display arrays in the console conveniently
  *
  * @param input_array array to be printed to console
  * @param length length of given array
@@ -51,8 +55,13 @@
  /**
  * @brief Find median value of array
  *
- * This function gives the median of a given array.
- * Therefore it finds the middle value of every given value inside of an array
+ *   This class takes a pre-sorted array and determins the median
+ * (which by definition are the middle entries of a sorted set)
+ *
+ *  --- Warning: --- 
+ *  This function can only be used, when the set, given
+ *  by input_array, is already sorted. It won't work if the array
+ *  is not sorted before this function is being called.
  *
  * @param input_array given array to be evaluated
  * @param length length of array to be evaluated
@@ -65,9 +74,9 @@
  /**
  * @brief Find average value of array
  *
- * This function gives the average of a given array.
- * Therefore it adds every value of the given array and devides it by its length
- * and rounds it down to return a char value back.
+ * A generic function about calculating the mean (average) of a given set
+ * This is being done by adding every value together and dividing by the 
+ * number of elements in the set.
  *
  * @param input_array given array to be evaluated
  * @param length length of array to be evaluated
@@ -81,8 +90,10 @@
  /**
  * @brief Find maximum value of array
  *
- * This function gives the maximum of a given array.
- * Therefore it evaluates the array and finds the biggest value and returns it back.
+ * A compact function to find out the maximum of a given array, be it 
+ * sorted or unsorted. Alternatively when the call of the sort_array()
+ * function is used before this function it can be drastically reduced
+ * to simply: return (*input_array)[0];
  *
  * @param input_array given array to be evaluated
  * @param length length of array to be evaluated
@@ -96,8 +107,10 @@
  /**
  * @brief Find minimum value of array
  *
- * This function gives the minimum of a given array.
- * Therefore it evaluates the array and finds the smallest value and returns it back.
+ * A compact function to find out the minimum of a given array, be it 
+ * sorted or unsorted. Alternatively when the call of the sort_array()
+ * function is used before this function it can be drastically reduced
+ * to simply: return (*input_array)[length-1];
  *
  * @param input_array given array to be evaluated
  * @param length length of array to be evaluated
@@ -111,8 +124,17 @@
  /**
  * @brief Sort array DESC
  *
- * Given function sorts an array in descending order.
- * That means the biggest value is the first one, the smallest value is the last value.
+ * The actual core of the statistics program. This function sorts the values
+ * of the array using the bubble sort. Though not the efficient of the sorting
+ * methods with a runtime of O(n^2), it is relatively simple to implement.
+ *
+ * Two values are being compared by each other and in case the bigger value is
+ * not on the earlier position, they get swapped (since the module demands a
+ * descending order, with means the bigger values are first). 
+ *
+ * In order to swap the values, a helper variable "temp_val" is being used to
+ * temporarily store the value of the right value, to be then rewritten after
+ * the actual swap.
  *
  * @param input_array given array to be evaluated
  * @param length length of array to be evaluated
