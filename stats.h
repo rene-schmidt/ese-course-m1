@@ -32,7 +32,7 @@
  *
  * @param input_array pointer reference of array to be diagnosed
  */
- void print_statistics(unsigned char *input_array);
+ void print_statistics(unsigned char (*input_array)[], int length);
 
 
 
@@ -44,7 +44,7 @@
  * @param input_array array to be printed to console
  * @param length length of given array
  */
- void print_array(unsigned char *input_array, int length);
+ void print_array(unsigned char (*input_array)[], int length);
 
 
 
@@ -59,8 +59,7 @@
  *
  * @return Returns the calculated median of the input array
  */
- char find_median(unsigned char *input_array, int length);
-
+ float find_median(unsigned char (*input_array)[], int length);
 
 
  /**
@@ -75,7 +74,7 @@
  *
  * @return Returns the calculated average value of the input array
  */
- char find_mean(unsigned char *input_array, int length);
+ unsigned char find_mean(unsigned char (*input_array)[], int length);
 
 
 
@@ -90,7 +89,7 @@
  *
  * @return Returns the biggest value of the input array
  */
- char find_maximum(unsigned char *input_array, int length);
+ unsigned char find_maximum(unsigned char (*input_array)[], int length);
 
 
 
@@ -105,7 +104,7 @@
  *
  * @return Returns the smallest value of the input array
  */
- char find_minimum(unsigned char *input_array, int length);
+ unsigned char find_minimum(unsigned char (*input_array)[], int length);
 
 
 
@@ -118,7 +117,7 @@
  * @param input_array given array to be evaluated
  * @param length length of array to be evaluated
  */
- void sort_array(unsigned char *input_array, int length);
+ void sort_array(unsigned char (*input_array)[], int length);
 
 
 

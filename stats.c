@@ -40,43 +40,114 @@ void main() {
 
   /* Other Variable Declarations Go Here */
   /* Statistics and Printing Functions Go Here */
-
+  print_statistics(&test, SIZE);
 }
 
-void print_statistics(unsigned char *input_array){
-  /*printf()*/
+void print_statistics(unsigned char (*input_array)[], int length){
+
+  printf("%s", "Array (unsorted): ");
+  print_array(input_array, length);
+
+  sort_array(input_array, length);
+
+  printf("%s", "Array (sorted): ");
+  print_array(input_array, length);
+
+  printf("%s", "------------");
+  printf("%s", "\r\n");
+
+  printf("%s", "Minimum (find_minimum): ");
+  printf("%u", find_minimum(input_array,length));
+  printf("%s", "\r\n");
+
+  printf("%s", "Maximum (find_maximum): ");
+  printf("%u", find_maximum(input_array,length));
+  printf("%s", "\r\n");
+
+  printf("%s", "Average (find_mean): ");
+  printf("%u", find_mean(input_array,length));
+  printf("%s", "\r\n");
+
+  printf("%s", "Median (find_median): ");
+  printf("%.1f", find_median(input_array,length));
+  printf("%s", "\r\n");
+
 }
 
  
-void print_array(unsigned char *input_array, int length){
-  /*printf()*/
+void print_array(unsigned char (*input_array)[], int length){
+  for (int i = 0; i < length; i++){
+    printf("%u ", (*input_array)[i]);
+  }
+  printf("\n");
 }
 
  
-char find_median(unsigned char *input_array, int length){
-  char median;
-  return median;
+float find_median(unsigned char (*input_array)[], int length){
+
+  if(length % 2 == 0){
+    return ( (*input_array)[(length/2)-1] + (*input_array)[(length/2)] ) / 2.0;
+  } else {
+    return (*input_array)[(int)(length/2)];
+  }
+
 }
 
  
-char find_mean(unsigned char *input_array, int length){
-  char mean;
+unsigned char find_mean(unsigned char (*input_array)[], int length){
+  
+  unsigned int mean = 0;
+
+  for (int i = 0; i < length; i++){
+    mean += (*input_array)[i];
+  }
+
+  mean /= length;
+
   return mean;
 }
 
 
-char find_maximum(unsigned char *input_array, int length){
-  char maximum;
+unsigned char find_maximum(unsigned char (*input_array)[], int length){
+  
+  unsigned char maximum = (*input_array)[0];
+
+  for (int i = 1; i < length; i++){
+    if((*input_array)[i] >= maximum ){
+      maximum = (*input_array)[i];
+    }
+  }
+
   return maximum;
 }
 
  
-char find_minimum(unsigned char *input_array, int length){
-  char minimum;
+unsigned char find_minimum(unsigned char (*input_array)[], int length){
+  
+  unsigned char minimum = (*input_array)[0];
+
+  for (int i = 1; i < length; i++){
+    if((*input_array)[i] <= minimum ){
+      minimum = (*input_array)[i];
+    }
+  }
+  
   return minimum;
 }
 
  
-void sort_array(unsigned char *input_array, int length){
-  /*Placeholder*/
+void sort_array(unsigned char (*input_array)[], int length){
+
+  unsigned char temp_val;
+  
+  for (int i = 0; i < length-1; i++){
+    for (int j = 0; j < length-1; j++){
+      if((*input_array)[j]<=(*input_array)[j+1]){
+        temp_val = (*input_array)[j];
+        (*input_array)[j] = (*input_array)[j+1];
+        (*input_array)[j+1] = temp_val;
+      }
+    }
+  }
+
 }
