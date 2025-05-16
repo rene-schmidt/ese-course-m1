@@ -9,13 +9,16 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief Main function - First programming excercise
  *
- * <Add Extended Description Here>
+ * This file contains the problem to sort a given array with given size by its value.
+ * Furthermore the program consists of several given functions aswell as a statistic
+ * function that represents the given task to find the specific key features such as:
+ * minimum, maximum, average and median.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author René-Nicky Schmidt
+ * @date May 16th, 2025
  *
  */
 
@@ -40,4 +43,40 @@ void main() {
 
 }
 
-/* Add other Implementation File Code Here */
+void print_statistics(unsigned char *input_array){
+  /*printf()*/
+}
+
+ 
+void print_array(unsigned char *input_array, int length){
+  /*printf()*/
+}
+
+ 
+char find_median(unsigned char *input_array, int length){
+  char median;
+  return median;
+}
+
+ 
+char find_mean(unsigned char *input_array, int length){
+  char mean;
+  return mean;
+}
+
+
+char find_maximum(unsigned char *input_array, int length){
+  char maximum;
+  return maximum;
+}
+
+ 
+char find_minimum(unsigned char *input_array, int length){
+  char minimum;
+  return minimum;
+}
+
+ 
+void sort_array(unsigned char *input_array, int length){
+  /*Placeholder*/
+}

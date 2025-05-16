@@ -9,13 +9,14 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.h
+ * @brief Header-File for specific helper functions
  *
- * <Add Extended Description Here>
+ * This header file contains all helper classes needed to fulfill the requirements to 
+ * be able to solve the problem presented by the course.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author René-Nicky Schmidt
+ * @date May 16th, 2025
  *
  */
 #ifndef __STATS_H__
@@ -24,17 +25,101 @@
 /* Add Your Declarations and Function Comments here */ 
 
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief Print statistics to console
  *
- * <Add Extended Description Here>
+ * This function prints the statistics of given array and returns:
+ * minimum, maximum, average and median
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- *
- * @return <Add Return Informaiton here>
+ * @param input_array pointer reference of array to be diagnosed
  */
+ void print_statistics(unsigned char *input_array);
+
+
+
+ /**
+ * @brief Print a given array
+ *
+ * A simple printing function that returns to the console a given array with given length
+ *
+ * @param input_array array to be printed to console
+ * @param length length of given array
+ */
+ void print_array(unsigned char *input_array, int length);
+
+
+
+ /**
+ * @brief Find median value of array
+ *
+ * This function gives the median of a given array.
+ * Therefore it finds the middle value of every given value inside of an array
+ *
+ * @param input_array given array to be evaluated
+ * @param length length of array to be evaluated
+ *
+ * @return Returns the calculated median of the input array
+ */
+ char find_median(unsigned char *input_array, int length);
+
+
+
+ /**
+ * @brief Find average value of array
+ *
+ * This function gives the average of a given array.
+ * Therefore it adds every value of the given array and devides it by its length
+ * and rounds it down to return a char value back.
+ *
+ * @param input_array given array to be evaluated
+ * @param length length of array to be evaluated
+ *
+ * @return Returns the calculated average value of the input array
+ */
+ char find_mean(unsigned char *input_array, int length);
+
+
+
+ /**
+ * @brief Find maximum value of array
+ *
+ * This function gives the maximum of a given array.
+ * Therefore it evaluates the array and finds the biggest value and returns it back.
+ *
+ * @param input_array given array to be evaluated
+ * @param length length of array to be evaluated
+ *
+ * @return Returns the biggest value of the input array
+ */
+ char find_maximum(unsigned char *input_array, int length);
+
+
+
+ /**
+ * @brief Find minimum value of array
+ *
+ * This function gives the minimum of a given array.
+ * Therefore it evaluates the array and finds the smallest value and returns it back.
+ *
+ * @param input_array given array to be evaluated
+ * @param length length of array to be evaluated
+ *
+ * @return Returns the smallest value of the input array
+ */
+ char find_minimum(unsigned char *input_array, int length);
+
+
+
+ /**
+ * @brief Sort array DESC
+ *
+ * Given function sorts an array in descending order.
+ * That means the biggest value is the first one, the smallest value is the last value.
+ *
+ * @param input_array given array to be evaluated
+ * @param length length of array to be evaluated
+ */
+ void sort_array(unsigned char *input_array, int length);
+
 
 
 #endif /* __STATS_H__ */

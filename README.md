@@ -1,1 +1,2 @@
-/* Add Author and Project Details here */
+Author: René-Nicky Schmidt
+Project Details: A project on the course on Coursera by the name: "Introduction to Embedded Systems Software and Development Environments", the first programming excercise that implements a sorting and statistic program, to evaluate an array of fixed size, containing unsigned char values.
